@@ -11,5 +11,13 @@ module.exports = {
   },
   devServer: {
     contentBase: outputPath
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'] // useは後ろから読み込まれる！
+      }
+    ]
   }
 };
