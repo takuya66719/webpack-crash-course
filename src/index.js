@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import Lion from './uitilities';
+import Lion2 from './uitilities';
 
 // console.log(uitilities.NiJou(7));
-console.log(Lion.say());
+console.log(Lion2.say());
 
 function component() {
   const elem = document.createElement('div');
