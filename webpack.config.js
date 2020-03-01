@@ -17,6 +17,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'] // useは後ろから読み込まれる！
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        loader: 'url-loader',
+        options: {
+          limit: 2048,
+          name: './images/[name].[ext]'
+        }
       }
     ]
   }
