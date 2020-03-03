@@ -5,4 +5,6 @@ import './style.scss';
 
 console.log('Log!!!!!!!');
 
+alrt('Hi, souce!!');
+
 ReactDOM.render(<div>Hello, React!</div>, document.getElementById('root'));
