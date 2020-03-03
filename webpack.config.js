@@ -1,5 +1,6 @@
 const path = require('path');
 
+// tetetet
 const outputPath = path.resolve(__dirname, 'dist');
 console.log(outputPath);
 
