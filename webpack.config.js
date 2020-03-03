@@ -1,6 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const outputPath = path.resolve(__dirname, 'dist');
 console.log(outputPath);
 
@@ -17,10 +18,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'] // useは後ろから読み込まれる！
-      },
-      {
         test: /\.(jpe?g|png|gif|ico)$/i,
         loader: 'url-loader',
         options: {
@@ -29,8 +26,8 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'] // useは後ろから読み込まれる！
+        test: /\.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // useは後ろから読み込まれる！
       },
       {
         test: /\.jsx?$/,
@@ -47,6 +44,20 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css'
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      })
+    ]
+  }
 };
