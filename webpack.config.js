@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const outputPath = path.resolve(__dirname, 'dist');
 console.log(outputPath);
 
@@ -57,7 +58,8 @@ module.exports = {
             drop_console: true
           }
         }
-      })
+      }),
+      new OptimizeCssAssetsPlugin({})
     ]
   }
 };
