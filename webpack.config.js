@@ -13,3 +13,5 @@ module.exports = {
     contentBase: outputPath
   }
 };
+
+// module
